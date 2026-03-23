@@ -1,5 +1,6 @@
 package core.basesyntax;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.List;
@@ -8,8 +9,9 @@ import java.util.Map;
 public class Main {
     public static void main(String[] arg) {
         // 1. Read the data from the input CSV file
+        File file = new File("reportToRead.csv");
         FileReaderService fileReader = new FileReaderServiceImpl() {};
-        List<String> inputReport = fileReader.read("reportToRead.csv");
+        List<String> inputReport = fileReader.read(file);
 
         // 2. Convert the incoming data into FruitTransactions list
         DataConverter dataConverter = new DataConverterImpl();
@@ -30,6 +32,6 @@ public class Main {
 
         // 5. Generate report based on the current Storage state
         ReportGenerator reportGenerator = new ReportGeneratorImpl();
-        String resultingReport = reportGenerator.generate(storage); // Передати storage напряму
+        String resultingReport = reportGenerator.generate(storage);
     }
 }

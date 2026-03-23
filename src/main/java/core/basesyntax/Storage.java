@@ -12,6 +12,4 @@ public class Storage {
     Map<String, Integer> getStorage() {
         return storage;
     }
-
-
 }
