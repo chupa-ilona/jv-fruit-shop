@@ -17,7 +17,7 @@ public class ReportGeneratorImpl implements ReportGenerator {
     }
 
     @Override
-    public String FruitTxToFile(FruitTransaction fruitTx) {
+    public String fruitTxToFile(FruitTransaction fruitTx) {
         return fruitTx.getFruit() + ","
                 + fruitTx.getQuantity();
     }

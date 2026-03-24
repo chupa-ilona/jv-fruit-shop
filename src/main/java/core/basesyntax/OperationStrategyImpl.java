@@ -13,6 +13,7 @@ public class OperationStrategyImpl implements OperationStrategy {
         }
         this.handlers = Collections.unmodifiableMap(new HashMap<>(handlers));
     }
+
     @Override
     public OperationHandler getHandler(FruitTransaction.Operation operation) {
         OperationHandler handler = handlers.get(operation);
