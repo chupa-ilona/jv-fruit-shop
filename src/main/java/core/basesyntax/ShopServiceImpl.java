@@ -2,7 +2,6 @@ package core.basesyntax;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ShopServiceImpl implements ShopService {
     private final OperationStrategy strategy;
@@ -16,7 +15,7 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public void process(List<FruitTransaction> transactions) {
-        for(FruitTransaction tx : transactions) {
+        for (FruitTransaction tx : transactions) {
             strategy.getHandler(tx.getOperation()).handle(storage.getStorage(), tx);
         }
     }

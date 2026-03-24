@@ -35,7 +35,6 @@ public class FruitTransaction {
         this.quantity = quantity;
     }
 
-
     public enum Operation {
         BALANCE("b"),
         SUPPLY("s"),

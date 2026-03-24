@@ -9,7 +9,7 @@ public class PurchaseOperation implements OperationHandler {
         if (storage.get(tx.getFruit()) < tx.getQuantity()) {
             throw new IllegalStateException("No enough " + tx.getFruit() + " in stock");
         } else {
-            storage.merge(tx.getFruit(), -tx.getQuantity(), Integer::sum);}
-
+            storage.merge(tx.getFruit(), -tx.getQuantity(), Integer::sum);
+        }
     }
 }
