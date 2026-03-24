@@ -1,16 +1,19 @@
-package core.basesyntax;
+package core.basesyntax.strategy;
+
+import core.basesyntax.model.FruitTransaction;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class OperationStrategyImpl implements OperationStrategy {
-    private Map<FruitTransaction.Operation, OperationHandler> handlers = new HashMap<>();
+    private final Map<FruitTransaction.Operation, OperationHandler> handlers;
 
     public OperationStrategyImpl(Map<FruitTransaction.Operation, OperationHandler> handlers) {
         if (handlers == null || handlers.isEmpty()) {
             throw new IllegalArgumentException("handlers map must not be null or empty");
         }
+
         this.handlers = Collections.unmodifiableMap(new HashMap<>(handlers));
     }
 

@@ -1,5 +1,11 @@
 package core.basesyntax;
 
+import core.basesyntax.db.Storage;
+import core.basesyntax.model.FruitTransaction;
+import core.basesyntax.service.*;
+import core.basesyntax.service.impl.*;
+import core.basesyntax.strategy.*;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -8,8 +14,8 @@ import java.util.Map;
 public class Main {
     public static void main(String[] arg) {
         // 1. Read the data from the input CSV file
-        File file = new File("reportToRead.csv");
-        FileReaderService fileReader = new FileReaderServiceImpl() {};
+        File file = new File("src/main/resources/reportToRead.csv");
+        FileReaderService fileReader = new FileReaderServiceImpl();
         List<String> inputReport = fileReader.read(file);
 
         // 3. Create and feel the map with all OperationHandler implementations
@@ -20,7 +26,6 @@ public class Main {
         operationHandlers.put(FruitTransaction.Operation.SUPPLY, new SupplyOperation());
         OperationStrategy operationStrategy = new OperationStrategyImpl(operationHandlers);
 
-        // 2. Convert the incoming data into FruitTransactions list
         DataConverter dataConverter = new DataConverterImpl();
         List<FruitTransaction> transactions = dataConverter.convertToTransaction(inputReport);
 
@@ -32,5 +37,8 @@ public class Main {
         // 5. Generate report based on the current Storage state
         ReportGenerator reportGenerator = new ReportGeneratorImpl();
         String resultingReport = reportGenerator.generate(storage);
+
+        FileWriterService fileWriter = new FileWriterServiceImpl();
+        fileWriter.write(resultingReport, "result.csv");
     }
 }

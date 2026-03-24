@@ -1,4 +1,6 @@
-package core.basesyntax;
+package core.basesyntax.service.impl;
+
+import core.basesyntax.service.FileWriterService;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

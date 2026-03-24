@@ -1,4 +1,4 @@
-package core.basesyntax;
+package core.basesyntax.model;
 
 public class FruitTransaction {
     private Operation operation;
@@ -49,6 +49,15 @@ public class FruitTransaction {
 
         public String getCode() {
             return code;
+        }
+
+        public static Operation fromCode(String code) {
+            for (Operation op : Operation.values()) {
+                if (op.getCode().equals(code)) {
+                    return op;
+                }
+            }
+            throw new IllegalArgumentException("Unknown operation code: " + code);
         }
     }
 }

@@ -1,4 +1,7 @@
-package core.basesyntax;
+package core.basesyntax.service.impl;
+
+import core.basesyntax.model.FruitTransaction;
+import core.basesyntax.service.DataConverter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +13,7 @@ public class DataConverterImpl implements DataConverter {
                                                .map(String::trim)
                                                .toList())
                 .map(fruitTransaction -> new FruitTransaction(FruitTransaction
-                                .Operation.valueOf(fruitTransaction.get(0)),
+                                .Operation.fromCode(fruitTransaction.get(0)),
                         fruitTransaction.get(1), Integer.parseInt(fruitTransaction.get(2))
                 )).toList();
     }

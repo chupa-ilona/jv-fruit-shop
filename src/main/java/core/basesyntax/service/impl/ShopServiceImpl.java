@@ -1,11 +1,16 @@
-package core.basesyntax;
+package core.basesyntax.service.impl;
+
+import core.basesyntax.strategy.OperationStrategy;
+import core.basesyntax.db.Storage;
+import core.basesyntax.model.FruitTransaction;
+import core.basesyntax.service.ShopService;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class ShopServiceImpl implements ShopService {
     private final OperationStrategy strategy;
-    private Storage storage;
+    private final Storage storage;
 
     public ShopServiceImpl(OperationStrategy strategy) {
         this.strategy = strategy;

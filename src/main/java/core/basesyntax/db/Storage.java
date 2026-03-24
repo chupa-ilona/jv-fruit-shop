@@ -1,4 +1,4 @@
-package core.basesyntax;
+package core.basesyntax.db;
 
 import java.util.Map;
 
@@ -9,7 +9,7 @@ public class Storage {
         this.storage = storage;
     }
 
-    Map<String, Integer> getStorage() {
+    public Map<String, Integer> getStorage() {
         return storage;
     }
 }
